@@ -1,15 +1,11 @@
-import asyncio
 import os
+import asyncio
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 import yt_dlp
-
-# Вставь сюда свой токен от BotFather
-TOKEN = "8283892101:AAHNFyoYo6HDfJlnlFPfZFDN6FuJby6A3eI"
-
+TOKEN = os.getenv("TOKEN")
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
-
 @dp.message(Command("start"))
 async def start(message: types.Message):
     await message.answer(
@@ -55,4 +51,5 @@ async def main():
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
+
     asyncio.run(main())
